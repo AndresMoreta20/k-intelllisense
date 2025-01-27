@@ -1,71 +1,14 @@
-```json
-{
-  "k-component-filter": {
-    "prefix": [
-      "k-component-filter",
-      "<k-component-filter"
-    ],
-    "description": "Componente con filtros de búsqueda para la plantilla de la barra lateral",
-    "body": [
-      "<div class=\"card\">",
-      "<div class=\"card-header\">",
-      "    <h5>Filtros de búsqueda</h5>",
-      "    <div class=\"kl-sidebar-filter-buttons\">",
-      "        <button type=\"button\" class=\"btn btn-default\" (click)=\"cleanFilters()\">",
-      "            <span class=\"k-search-options text-center\" [popover]=\"'Borrar todos los filtros'\">",
-      "                <em class=\"fa fa-eraser text-primary\"></em>",
-      "            </span>",
-      "        </button>",
-      "    </div>",
-      "</div>",
-      "<div class=\"card-body\">",
-      "  <form class=\"form\" #resultForm=\"ngForm\" (submitValidForm)=\"clickSearch()\">",
-      "    <div class=\"scroll-sidebar\">",
-      "        <!--BUSCAR POR NOMBRE - FILTRO: SOLO CARACTERES-->",
-      "        <div class=\"form-group\">",
-      "            <k-fieldset kFieldsetLegend='Personas' class='d-block mt-2'>",
-      "                <div class=\"k-search-space-top\">",
-      "                    <k-search-input-text class=\"k-search-space-top\" id=\"firstName\" name=\"Nombre\" [required]=\"true\"",
-      "                        [(ngModel)]=\"personsFilterService.firstName\" [upperInputValue]=\"true\" [placeholder]=\"''\"",
-      "                        [showComparatorType]=\"true\" [disabledCommaList]=\"true\" [label]=\"'Nombre:'\"",
-      "                        [optionSettings]=\"optionSettings\" [maxlength]=\"50\"",
-      "                        [regularExpression]=\"'[a-zñA-ZÑ ]'\">",
-      "                    </k-search-input-text>",
-      "                </div>",
-      "                <!--BUSCAR POR APELLIDO - FILTRO: SOLO ALFANUMÉRICO-->",
-      "                <div class=\"k-search-space-top\">",
-      "                    <k-search-input-text class=\"k-search-space-top\" id=\"lastName\" name=\"Apellido\"",
-      "                        [(ngModel)]=\"personsFilterService.lastName\" [upperInputValue]=\"true\"",
-      "                        [placeholder]=\"''\" [showComparatorType]=\"true\" [disabledCommaList]=\"true\"",
-      "                        [label]=\"'Apellido:'\" [optionSettings]=\"optionSettings\" [maxlength]=\"50\"",
-      "                        [regularExpression]=\"'[a-zñA-ZÑ 0-9]'\">",
-      "                    </k-search-input-text>",
-      "                </div>",
-      "                <!--BUSCAR POR DOCUMENTO - FILTRO: SOLO NÚMEROS-->",
-      "                <div class=\"k-search-space-top\">",
-      "                    <k-search-input-text class=\"k-search-space-top\" id=\"documentNumber\" name=\"Cédula\"",
-      "                        [(ngModel)]=\"personsFilterService.documentNumber\" [upperInputValue]=\"true\"",
-      "                        [placeholder]=\"''\" [showComparatorType]=\"false\" [disabledCommaList]=\"false\"",
-      "                        [label]=\"'Cédula:'\" [optionSettings]=\"rangeOptionSettings\" [maxlength]=\"10\"",
-      "                        [regularExpression]=\"'[0-9]'\">",
-      "                    </k-search-input-text>",
-      "                </div>",
-      "                <!--BUSCAR POR CORREO ELECTRÓNICO-->",
-      "                <div class=\"k-search-space-top\">",
-      "                    <k-search-input-text class=\"k-search-space-top\" id=\"email\" name=\"Correo\"",
-      "                        [(ngModel)]=\"personsFilterService.email\" [placeholder]=\"''\" [showComparatorType]=\"false\"",
-      "                        [disabledCommaList]=\"false\" [label]=\"'Correo:'\" [optionSettings]=\"optionSettings\"",
-      "                        [maxlength]=\"50\">",
-      "                    </k-search-input-text>",
-      "                </div>",
-      "                <!--BUSCAR POR FECHA DE REGISTRO-->",
-      "                <div class=\"k-search-space-top\">",
-      "                    <k-search-input-date class=\"k-search-space-top\" id=\"createdDate\" name=\"Fecha registro\"",
-      "                        [label]=\"'Fecha registro:'\" [optionSettings]=\"rangeOptionSettings\" [required]=\"false\"",
-      "                        [showComparatorType]=\"true\" [showTime]=\"false\"",
-      "                        [showIcon]=\"true\" [(ngModel)]=\"personsFilterService.createdDate\" [yearRange]=\"'1'\">",
-      "                    </k-search-input-date>",
-      "                </div>",
-      "",
-      "                <!--BUSCAR POR ESTADO-->",
-      "                <div class=\"k-search-space-top\">",
+# K-Component Layout
+
+**Descripción:**
+Este componente contiene el diseño completo con el nombre de la aplicación, título, plantillas para encabezado, ayuda, barra lateral, contenido y una tabla paginada.
+
+## Uso
+
+```html
+<k-layout [appName]="'Proyecto Base'" [pageTitle]="'Administración de personas.'" [headerTemplate]="headerTemplate"
+   (logout)="logout()" [disableLinkHome]="false" [sidebarTemplate]="sidebarTemplate" [disableLoading]="false"
+   [helpTemplate]="helpTemplate" [audit]="false">
+   <ng-container *ngTemplateOutlet="mycontent">
+   </ng-container>
+</k-layout>
